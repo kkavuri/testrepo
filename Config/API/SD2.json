@@ -1,0 +1,17 @@
+	{
+			"type"		: "API",
+			"level"		: "UC",
+			"name"		: "SD2",
+			"mainscript": "SD2.xls",
+			"repository": "GIT",			
+			"artifacts"	: 
+			[
+				{
+					"name"			: "SD2.xls",
+					"type"			: "Script"	,
+					"extract"		: "No"			,
+					"source"	 	: "HCS1.0_Test_Automation/API Automation/Automation Test Scripts/TAP/",
+					"destination"	: "Script"
+				}
+			]			
+	}

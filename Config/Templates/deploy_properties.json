@@ -1,0 +1,124 @@
+{
+    "EM": {
+        "vami_properties": {
+            "ip0": "16.103.23.131", 
+            "hostname": "host131.solution.hpeswlab.net", 
+            "gateway": "16.103.16.1", 
+            "DNS": "16.103.23.159", 
+            "netmask0": "255.255.248.0"
+        }, 
+        "deploy_vm": "False", 
+        "version": "4.6", 
+        "product_ova": "True", 
+        "intigrate_with": ""
+    }, 
+    "ITBA-BO": {
+        "vami_properties": {
+            "ip0": "16.103.23.163", 
+            "hostname": "host163.solution.hpeswlab.net", 
+            "gateway": "16.103.16.1", 
+            "DNS": "16.103.23.159", 
+            "netmask0": "255.255.248.0"
+        }, 
+        "deploy_vm": "False", 
+        "version": "4.6", 
+        "product_ova": "True", 
+        "intigrate_with": ""
+    }, 
+    "CO": {
+        "deploy_vm": "True", 
+        "vami_properties": {
+            "ip0": "16.103.23.104", 
+            "hostname": "host132.solution.hpeswlab.net", 
+            "gateway": "16.103.16.1", 
+            "DNS": "16.103.23.159", 
+            "netmask0": "255.255.248.0"
+        }, 
+        "product_ova": "True", 
+        "application_details": {
+            "app_url": "https://host104.solution.hpeswlab.net:8443/csa/PV", 
+            "app_password": "cloud", 
+            "app_user_name": "finance"
+        }, 
+        "vm_credentials": {
+            "vm_name": "CO_161018112045", 
+            "vm_pwd": "vperf*viewer", 
+            "vm_user_name": "root"
+        }, 
+        "version": "4.6", 
+        "intigrate_with": ""
+    }, 
+    "OMI": {
+        "vami_properties": {
+            "ip0": "16.103.23.22", 
+            "hostname": "host022.solution.hpeswlab.net", 
+            "gateway": "16.103.16.1", 
+            "DNS": "16.103.23.159", 
+            "netmask0": "255.255.248.0"
+        }, 
+        "deploy_vm": "False", 
+        "version": "4.6", 
+        "product_ova": "True", 
+        "intigrate_with": ""
+    }, 
+    "ITBA-BA": {
+        "vami_properties": {
+            "ip0": "16.103.23.162", 
+            "hostname": "host162.solution.hpeswlab.net", 
+            "gateway": "16.103.16.1", 
+            "DNS": "16.103.23.159", 
+            "netmask0": "255.255.248.0"
+        }, 
+        "deploy_vm": "False", 
+        "version": "4.6", 
+        "product_ova": "True", 
+        "intigrate_with": ""
+    }, 
+    "vCenter_properties": {
+        "resource_pool": "Development", 
+        "vcenter_pwd": "ran.zoo-80", 
+        "datacenter_name": "DC", 
+        "datastore_name": "CSA-3PAR-LUN0", 
+        "cluster_name": "CSA_Cluster", 
+        "vcenter_host": "16.103.21.95", 
+        "vcenter_user": "kavurik", 
+        "vm_folder": "HCS_Automate_OTSI", 
+        "port": 443
+    }, 
+    "CSA-OO": {
+        "deploy_vm": "True", 
+        "vami_properties": {
+            "ip0": "16.103.23.83", 
+            "hostname": "host083.solution.hpeswlab.net", 
+            "gateway": "16.103.16.1", 
+            "DNS": "16.103.23.159", 
+            "netmask0": "255.255.248.0"
+        }, 
+        "product_ova": "True", 
+        "application_details": {
+            "app_url": "https://host083.solution.hpeswlab.net:8444/csa", 
+            "app_password": "cloud", 
+            "app_user_name": "admin"
+        }, 
+        "vm_credentials": {
+            "vm_name": "CSA-OO_161018104531", 
+            "vm_pwd": "Solutions@2016", 
+            "vm_user_name": "root"
+        }, 
+        "version": "4.6", 
+        "intigrate_with": ""
+    }, 
+    "ITBA-VERTICA": {
+        "vami_properties": {
+            "ip0": "16.103.23.164", 
+            "hostname": "host164.solution.hpeswlab.net", 
+            "gateway": "16.103.16.1", 
+            "DNS": "16.103.23.159", 
+            "netmask0": "255.255.248.0"
+        }, 
+        "deploy_vm": "False", 
+        "version": "4.6", 
+        "product_ova": "True", 
+        "intigrate_with": ""
+    }
+}

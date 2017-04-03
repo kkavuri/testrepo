@@ -1,0 +1,17 @@
+	{
+			"type"		: "API",
+			"level"		: "UC",
+			"name"		: "Vcenter",
+			"mainscript": "Vcenter_4_7.xls",
+			"repository": "GIT",			
+			"artifacts"	: 
+			[
+				{
+					"name"			: "Vcenter_4_7.xls",
+					"type"			: "Script"	,
+					"extract"		: "No"			,
+					"source"	 	: "HCS1.0_Test_Automation/API Automation/Automation Test Scripts/TAP/",
+					"destination"	: "Script"
+				}
+			]			
+	}

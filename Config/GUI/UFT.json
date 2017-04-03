@@ -1,0 +1,152 @@
+        {
+                        "type"          : "UFT",
+                        "level"         : "UC",
+                        "name"          : "UseCasesExecution",
+                        "mainscript": "CO_Capacity",
+                        "repository": "GIT",
+
+                        "artifacts"     :
+                        [
+                                {
+                                        "name"                  : "CSA_Functions.qfl",
+                                        "type"                  : "/Library"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/LibraryFiles/App_Specific/4.7/",
+                                        "destination"   : "/Library_Files/App_Specific/4.7/"
+                                },
+                                {
+                                        "name"                  : "Cloud_Optimiser.qfl",
+                                        "type"                  : "/Library"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/LibraryFiles/App_Specific/4.7/",
+                                        "destination"   : "/Library_Files/App_Specific/4.7/"
+                                },
+                                {
+                                        "name"                  : "MPP_Functions.qfl",
+                                        "type"                  : "/Library"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/LibraryFiles/App_Specific/4.7/",
+                                        "destination"   : "/Library_Files/App_Specific/4.7/"
+                                },
+                                {
+                                        "name"                  : "ITBA_Functions.qfl",
+                                        "type"                  : "/Library"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/LibraryFiles/App_Specific/4.7/",
+                                        "destination"   : "/Library_Files/App_Specific/4.7/"
+                                },
+                                {
+                                        "name"                  : "OMI_Functions.qfl",
+                                        "type"                  : "/Library"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/LibraryFiles/App_Specific/4.7/",
+                                        "destination"   : "/Library_Files/App_Specific/4.7/"
+                                },
+                                {
+                                        "name"                  : "OpsA_Functions.qfl",
+                                        "type"                  : "/Library"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/LibraryFiles/App_Specific/4.7/",
+                                        "destination"   : "/Library_Files/App_Specific/4.7/"
+                                },
+                                {
+                                        "name"                  : "UCMDB_Functions.qfl",
+                                        "type"                  : "/Library"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/LibraryFiles/App_Specific/4.7/",
+                                        "destination"   : "/Library_Files/App_Specific/4.7/"
+                                },
+                                {
+                                        "name"                  : "Global_Functions.qfl",
+                                        "type"                  : "/Library"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/LibraryFiles/Global/",
+                                        "destination"   : "/Library_Files/Global/"
+                                },
+                                {
+                                        "name"                  : "Get_Data.qfl",
+                                        "type"                  : "/Library"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/LibraryFiles/Global/",
+                                        "destination"   : "/Library_Files/Global/"
+                                },
+                                {
+                                        "name"                  : "CO_Capacity",
+                                        "type"                  : "TestScript"  ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/Test_Scripts/",
+                                        "destination"   : "/Scripts"
+                                },
+                                {
+                                        "name"                  : "ITBA_CO_ShowReport",
+                                        "type"                  : "TestScript"  ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/Test_Scripts/",
+                                        "destination"   : "/Scripts"
+                                },
+                                {
+                                        "name"                  : "CO_ALERTS",
+                                        "type"                  : "TestScript"  ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/Test_Scripts/",
+                                        "destination"   : "/Scripts"
+                                },
+                                {
+                                        "name"                  : "OMIValidation",
+                                        "type"                  : "TestScript"  ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/Test_Scripts/",
+                                        "destination"   : "/Scripts"
+                                },
+                                {
+                                        "name"                  : "OPSA",
+                                        "type"                  : "TestScript"  ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/Test_Scripts/",
+                                        "destination"   : "/Scripts"
+                                },
+                                {
+                                        "name"                  : "UCMDB_UseCaseflow",
+                                        "type"                  : "TestScript"  ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/Test_Scripts/",
+                                        "destination"   : "/Scripts"
+                                },
+                                {
+                                        "name"                  : "COSTestData.xlsx",
+                                        "type"                  : "DataFile"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/Test_Data/4.7/",
+                                        "destination"   : "/TestData/4.7/"
+                                },
+                                {
+                                        "name"                  : "Configuration.xml",
+                                        "type"                  : "DataFile"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/ConfigurationFiles/",
+                                        "destination"   : "/Config_Files/"
+                                },
+                                {
+                                        "name"                  : "UseCaseMapping.xml",
+                                        "type"                  : "DataFile"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/ConfigurationFiles/",
+                                        "destination"   : "/Config_Files/"
+                                },
+                                {
+                                        "name"                  : "Execute.bat",
+                                        "type"                  : "DataFile"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/",
+                                        "destination"   : "."
+                                },
+                                {
+                                        "name"                  : "TAP_Output.xml",
+                                        "type"                  : "DataFile"    ,
+                                        "extract"               : "No"                  ,
+                                        "source"                : "HCS1.0_Test_Automation/UI Automation/UFT Files/",
+                                        "destination"   : "."
+                                }
+                        ]
+        }
+

@@ -1,0 +1,20 @@
+{"ALM":{
+		"apifilepath" : "C:\Users\dadina\Desktop\alm\Dadi\sprint 17\final-copy-for all at once update - fully executed\File_Read_API.txt",
+		"apialmplanpath" : "Subject\Helion Cloud Suite( HCS) / Cloud Orchestration Suite\HCS.10.16\HCS-TA\API\TestCase_Automation\4.7 Use Cases",
+		"apialmlabpath" : "Root\Helion Cloud Suite( HCS) / Cloud Orchestration Suite\HCS 2016.10\HCS-TA\Sprint 17\API",
+		"funcfilepath" : "C:\Users\dadina\Desktop\alm\Dadi\sprint 17\final-copy-for all at once update - fully executed\File_Read_Func.txt",
+		"funcalmplanpath" : "Subject\Helion Cloud Suite( HCS) / Cloud Orchestration Suite\HCS.10.16\HCS-TA\Functional\TestCase_Automation\4.7 Use Cases",
+		"funcalmlabpath" : "Root\Helion Cloud Suite( HCS) / Cloud Orchestration Suite\HCS 2016.10\HCS-TA\Sprint 17\Functional",
+		"almurl" : "https://qc2f.austin.hpecorp.net:8443/qcbin/",
+		"almusername" : "narasingarao.dadi",
+		"almpassword" : "Otsi$456",
+		"almdomain" : "BTO",
+		"almproject" : "ITOM_Solutions",
+		"almproduct" : "HCS 2016",
+		"almtesttype" : "MANUAL",
+		"almteststatus" : "Idea",
+		"almend" : "end"
+		}
+}
+
+
