@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="sOrder" />
+  <WatchEntry1 value="Browser(&quot;Display Standard Order&quot;).Page(&quot;Display Standard Order&quot;).Frame(&quot;Display_Order_Overview&quot;).WebEdit(&quot;sOrder_No&quot;).GetROProperty(&quot;value&quot;)" />
+</Properties>

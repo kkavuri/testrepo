@@ -1,0 +1,64 @@
+<Environment>
+	<Variable>
+		<Name>AppType</Name>
+		<Value>web</Value>
+	</Variable>
+	<Variable>
+		<Name>OR</Name>
+		<Value>yes</Value>
+	</Variable>
+	<Variable>
+		<Name>OR_Name</Name>
+		<Value>sap_web_v2.0</Value>
+	</Variable>
+	<Variable>
+		<Name>Domain</Name>
+		<Value>BTO</Value>
+	</Variable>
+	<Variable>
+		<Name>Project</Name>
+		<Value>ITOM_Solutions</Value>
+	</Variable>	
+	<Variable>
+		<Name>LoggerPath</Name>
+		<Value></Value>
+	</Variable>
+	<Variable>
+		<Name>GenerateReport</Name>
+		<Value>No</Value>
+	</Variable>	
+	<Variable>
+		<Name>ScreenshotsPath</Name>
+		<Value></Value>
+	</Variable>
+	<Variable>
+		<Name>TestDataPath</Name>
+		<Value></Value>
+	</Variable>
+	<Variable>
+		<Name>CSA</Name>
+		<Value>Cloud Service Automation</Value>
+	</Variable>
+	<Variable>
+		<Name>AppVersion</Name>
+		<Value>4.7</Value>
+	</Variable>
+	<Variable>
+		<Name>CO</Name>
+		<Value>HPE Cloud Optimizer</Value>
+	</Variable>	
+	<Variable>
+		<Name>Low</Name>
+		<Value>20</Value>
+	</Variable>
+	<Variable>
+		<Name>Medium</Name>
+		<Value>40</Value>
+	</Variable>
+	<Variable>
+		<Name>High</Name>
+		<Value>60</Value>
+	</Variable>
+	</Environment>
+
+

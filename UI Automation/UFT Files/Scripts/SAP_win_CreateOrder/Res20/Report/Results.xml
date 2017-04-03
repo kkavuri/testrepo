@@ -1,0 +1,926 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="India Standard Time">
+<General productName="HP Unified Functional Testing" productVer="12.54" os="Windows 7" host="USER-185"><DocLocation><![CDATA[D:\Tap_Framework\TAP\Scripts\SAP_win_CreateOrder]]></DocLocation></General>
+<Doc rID="T1"   productName= "HP Unified Functional Testing"  >
+<DName><![CDATA[SAP_win_CreateOrder]]></DName>
+<Res><![CDATA[Res20]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[LoadFunctionLibrary]]></Obj>
+<Details plainTxt="False" ><![CDATA[LoadFunctionLibrary function passed]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:20]]></Time>
+<TimeTick>1483357580</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="8" status="Passed" >
+<Disp><![CDATA[LoadFunctionLibrary]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[LoadFunctionLibrary]]></Obj>
+<Details plainTxt="False" ><![CDATA[LoadFunctionLibrary function passed]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:20]]></Time>
+<TimeTick>1483357580</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="9" status="Passed" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[LoadFunctionLibrary]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[LoadFunctionLibrary]]></Obj>
+<Details plainTxt="False" ><![CDATA[LoadFunctionLibrary function passed]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:20]]></Time>
+<TimeTick>1483357580</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="10" status="Passed" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[LoadFunctionLibrary]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:23]]></Time>
+<TimeTick>1483357583</TimeTick>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[SAP Easy Access]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:23]]></Time>
+<TimeTick>1483357583</TimeTick>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[SAP Easy Access]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;identify&nbsp;the&nbsp;object&nbsp;"SAP&nbsp;Easy&nbsp;Access"&nbsp;(of&nbsp;class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;this&nbsp;object's&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:23]]></Time>
+<TimeTick>1483357583</TimeTick>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[SAP Easy Access]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = SESSION_MANAGER<br>SapGui screen number = 100<br>SapGui program = SAPLSMTR_NAVIGATION<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:23]]></Time>
+<TimeTick>1483357583</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="15" status="Warning" nType="Description" >
+<Disp><![CDATA[SAP Easy Access]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="7" nRep="14" status="Failed" nType="Run Error" >
+<Disp><![CDATA[SAP Easy Access]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="13" status="Failed" >
+<Disp><![CDATA[SAP Easy Access]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="12" status="Failed" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:23]]></Time>
+<TimeTick>1483357583</TimeTick>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot identify the object &quot;SAP Easy Access&quot; (of class SAPGuiWindow).<BR/>Verify that this object's properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (87): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;SAP Easy Access&quot;).Activate&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:23]]></Time>
+<TimeTick>1483357583</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="17" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="86" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[SAP Easy Access]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[TableTreeControl]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"TableTreeControl"&nbsp;object's&nbsp;parent&nbsp;"SAP&nbsp;Easy&nbsp;Access"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[SAP Easy Access]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = SESSION_MANAGER<br>SapGui screen number = 100<br>SapGui program = SAPLSMTR_NAVIGATION<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="21" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[SAP Easy Access]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="9" nRep="20" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[TableTreeControl]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="19" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[SAP Easy Access]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="16" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;TableTreeControl&quot; object's parent &quot;SAP Easy Access&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (89): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;SAP Easy Access&quot;).SAPGuiTree(&quot;TableTreeControl&quot;).ActivateNode &quot;SAP Menu;Logistics;Sales and Distribution;Sales;Order;Create&quot;&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="23" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="88" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[Order Type]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"Order&nbsp;Type"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Sales&nbsp;Order:&nbsp;Initial"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 101<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="27" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="10" nRep="26" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Order Type]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="25" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="22" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;Order Type&quot; object's parent &quot;Create Sales Order: Initial&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (90): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Sales Order: Initial&quot;).SAPGuiEdit(&quot;Order Type&quot;).Set Order_type&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="29" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="89" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA[Sales Organization]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"Sales&nbsp;Organization"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Sales&nbsp;Order:&nbsp;Initial"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 101<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="33" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="10" nRep="32" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Sales Organization]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="31" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="28" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;Sales Organization&quot; object's parent &quot;Create Sales Order: Initial&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (91): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Sales Order: Initial&quot;).SAPGuiEdit(&quot;Sales Organization&quot;).Set Sales_organization&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="35" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="90" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[Distribution Channel]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"Distribution&nbsp;Channel"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Sales&nbsp;Order:&nbsp;Initial"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 101<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="39" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="10" nRep="38" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Distribution Channel]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="37" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="34" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;Distribution Channel&quot; object's parent &quot;Create Sales Order: Initial&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (92): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Sales Order: Initial&quot;).SAPGuiEdit(&quot;Distribution Channel&quot;).Set Distribution_channel&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="41" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="91" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[Division]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"Division"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Sales&nbsp;Order:&nbsp;Initial"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T36">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 101<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="45" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="10" nRep="44" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Division]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="43" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="40" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;Division&quot; object's parent &quot;Create Sales Order: Initial&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (93): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Sales Order: Initial&quot;).SAPGuiEdit(&quot;Division&quot;).Set &quot;00&quot;&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:25]]></Time>
+<TimeTick>1483357585</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="47" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="92" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;identify&nbsp;the&nbsp;object&nbsp;"Create&nbsp;Sales&nbsp;Order:&nbsp;Initial"&nbsp;(of&nbsp;class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;this&nbsp;object's&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[Create Sales Order: Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 101<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="51" status="Warning" nType="Description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="7" nRep="50" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="49" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Sales Order: Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="46" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot identify the object &quot;Create Sales Order: Initial&quot; (of class SAPGuiWindow).<BR/>Verify that this object's properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (95): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Sales Order: Initial&quot;).SendKey ENTER&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="53" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="94" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[Sold-To Party]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"Sold-To&nbsp;Party"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Standard&nbsp;Order:"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 4001<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="57" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="10" nRep="56" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Sold-To Party]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="55" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="52" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;Sold-To Party&quot; object's parent &quot;Create Standard Order:&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (96): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Standard Order:&quot;).SAPGuiEdit(&quot;Sold-To Party&quot;).Set Sold_to_Party&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="59" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="95" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[Ship-To Party]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"Ship-To&nbsp;Party"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Standard&nbsp;Order:"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 4001<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="63" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="10" nRep="62" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Ship-To Party]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="61" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="58" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T53">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;Ship-To Party&quot; object's parent &quot;Create Standard Order:&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (97): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Standard Order:&quot;).SAPGuiEdit(&quot;Ship-To Party&quot;).Set Ship_to_party&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="65" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="96" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[PO Number]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"PO&nbsp;Number"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Standard&nbsp;Order:"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 4001<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="69" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="10" nRep="68" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[PO Number]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="67" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="64" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;PO Number&quot; object's parent &quot;Create Standard Order:&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (98): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Standard Order:&quot;).SAPGuiEdit(&quot;PO Number&quot;).Set PO_number&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="71" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="97" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T59">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T60">
+<Obj plainTxt="False" ><![CDATA[All items]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"All&nbsp;items"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Standard&nbsp;Order:"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T61">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 4001<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="75" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="11" nRep="74" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[All items]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="73" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="70" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T62">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T63">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;All items&quot; object's parent &quot;Create Standard Order:&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (99): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Standard Order:&quot;).SAPGuiTable(&quot;All items&quot;).SetCellData 1,&quot;Material&quot;,Material&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="77" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="98" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T64">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T65">
+<Obj plainTxt="False" ><![CDATA[All items]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"All&nbsp;items"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Standard&nbsp;Order:"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T66">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 4001<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="81" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="11" nRep="80" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[All items]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="79" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="76" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T67">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T68">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;All items&quot; object's parent &quot;Create Standard Order:&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (100): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Standard Order:&quot;).SAPGuiTable(&quot;All items&quot;).SetCellData 1,&quot;Order Quantity&quot;,Order_quantity&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="83" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="99" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T69">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T70">
+<Obj plainTxt="False" ><![CDATA[Save   (Ctrl+S)]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"Save&nbsp;&nbsp;&nbsp;(Ctrl+S)"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Standard&nbsp;Order:"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T71">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 4001<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="87" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="12" nRep="86" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Save   (Ctrl+S)]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="85" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="82" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T72">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T73">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;Save   (Ctrl+S)&quot; object's parent &quot;Create Standard Order:&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (101): &quot;		SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Standard Order:&quot;).SAPGuiButton(&quot;Save   (Ctrl+S)&quot;).Click&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="89" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="100" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T74">
+<Obj plainTxt="False" ><![CDATA[Standard Order: Availability]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T75">
+<Obj plainTxt="False" ><![CDATA[Standard Order: Availability.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object does not exist"]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="92" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Standard Order: Availability.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="91" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Standard Order: Availability]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T76">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:26]]></Time>
+<TimeTick>1483357586</TimeTick>
+<Step rID="T77">
+<Obj plainTxt="False" ><![CDATA[StatusBar.GetROProperty "text"]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="96" status="Warning" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[StatusBar.GetROProperty "text"]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T78">
+<Obj plainTxt="False" ><![CDATA[StatusBar]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;find&nbsp;the&nbsp;"StatusBar"&nbsp;object's&nbsp;parent&nbsp;"Create&nbsp;Standard&nbsp;Order:"&nbsp;(class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;parent&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<Step rID="T79">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 4001<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="98" status="Warning" nType="Parent description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="13" nRep="97" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[StatusBar]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="95" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="88" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T80">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<Step rID="T81">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot find the &quot;StatusBar&quot; object's parent &quot;Create Standard Order:&quot; (class SAPGuiWindow).<BR/>Verify that parent properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (106): &quot;		OrderStatus=SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Standard Order:&quot;).SAPGuiStatusBar(&quot;StatusBar&quot;).GetROProperty(&quot;text&quot;)&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="100" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="105" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T82">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiWindow]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<Step rID="T83">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;identify&nbsp;the&nbsp;object&nbsp;"Create&nbsp;Standard&nbsp;Order:"&nbsp;(of&nbsp;class&nbsp;SAPGuiWindow).<br/>Verify&nbsp;that&nbsp;this&nbsp;object's&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<Step rID="T84">
+<Obj plainTxt="False" ><![CDATA[Create Standard Order:]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>SapGui transaction = VA01<br>SapGui screen number = 4001<br>SapGui program = SAPMV45A<br>Name = wnd[0]<br>Mercury Class = SAPGuiWindow<br>SapGui numeric component type = 21<br>]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="104" status="Warning" nType="Description" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="7" nRep="103" status="Failed" nType="Run Error" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="102" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Create Standard Order:]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="99" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T85">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<Step rID="T86">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot identify the object &quot;Create Standard Order:&quot; (of class SAPGuiWindow).<BR/>Verify that this object's properties match an object currently displayed in your application.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (114): &quot;				SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Create Standard Order:&quot;).CaptureBitmap Report_Path&amp;&quot;\CreateOrderFail.png&quot;&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="106" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="113" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="105" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="-1" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T87">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot open file: 'D:\Tap_Framework\TAP\Output\Reports\CreateOrderFail.png'.<BR/>Function file: D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl<BR/>Line (115): &quot;				Reporter.ReportEvent micFail,&quot;Standard order &quot;&amp;OrderNo&amp;&quot; has to be saved&quot;,&quot;Standard order &quot;&amp;OrderNo&amp;&quot; not saved&quot;, Report_Path&amp;&quot;\CreateOrderFail.png&quot;&quot;.]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="107" status="Failed" Source="D:\Tap_Framework\TAP\Library_Files\App_Specific\4.7\SAP_APP_Specific.qfl" SourceLine="114" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T88">
+<Obj plainTxt="False" ><![CDATA[Session]]></Obj>
+<Details plainTxt="False" ><![CDATA[SAPGuiSession]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<Step rID="T89">
+<Obj plainTxt="False" ><![CDATA[Close]]></Obj>
+<Details plainTxt="False" ><![CDATA[Close]]></Details>
+<Time><![CDATA[02-01-2017 - 17:16:27]]></Time>
+<TimeTick>1483357587</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="110" >
+<Disp><![CDATA[Close]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="109" >
+<Disp><![CDATA[Session]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="02-01-2017 - 17:16:20" eTime="02-01-2017 - 17:16:32" passed="3" failed="31" warnings="16" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Failed" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Failed" >
+<Disp><![CDATA[SAP_win_CreateOrder Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="02-01-2017 - 17:16:19" eTime="02-01-2017 - 17:16:32" passed="3" failed="31" warnings="16" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test SAP_win_CreateOrder Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

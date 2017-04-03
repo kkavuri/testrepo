@@ -1,0 +1,5 @@
+﻿<Properties>
+  <WatchEntry0 value="Browser(&quot;Logon&quot;).Page(&quot;Change Standard Order&quot;).Frame(&quot;itsframe1_20170328064257.88700&quot;).SAPTable(&quot;All items&quot;).highlight" />
+  <WatchEntry1 value="bb(101).set &quot;55&quot;" />
+  <WatchEntry2 value="bb(96).set &quot;55&quot;" />
+</Properties>

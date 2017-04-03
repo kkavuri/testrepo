@@ -1,0 +1,1 @@
+﻿var __testDataSource={items:[{dataFilePath:'Default.xls',dataFileFormat:'excel',dataFileFolder:'C:\\Users\\dkalakoti\\Desktop\\tap soft\\SAP_Automation_25_01\\TAP\\Scripts\\SAP_win_Login\\Res93',namePairs:[]}]};

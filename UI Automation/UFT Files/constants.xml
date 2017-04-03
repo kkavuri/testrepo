@@ -1,0 +1,8 @@
+<UseCases>
+	<UC_Declare>TAP_Output</UC_Declare>
+	<Scripts_Folder>Scripts</Scripts_Folder>
+	<Config_Folder>Config_Files</Config_Folder>
+	<UseCaseMapping_Xml>UseCaseMapping</UseCaseMapping_Xml>
+	<UseCaseResults_txt>UIUseCaseResults</UseCaseResults_txt>
+	<UseCaseResults_Xml>UseCaseResults</UseCaseResults_Xml>
+</UseCases>

@@ -1,0 +1,9 @@
+<UseCases>
+	<SAP_Win_usecase_createorder>SAP_win_Login,SAP_win_CreateOrder</SAP_Win_usecase_createorder>
+	<SAP_Win_usecase_changeOrder>SAP_win_Login,SAP_Win_ChangeOrder</SAP_Win_usecase_changeOrder>
+	<SAP_Win_usecase_dispalyorder>SAP_win_Login,SAP_Win_DispayOrder</SAP_Win_usecase_dispalyorder>
+	<SAP_Win_usecase_listOrder>SAP_win_Login,SAP_Win_OderList</SAP_Win_usecase_listOrder>
+	<SAP_Web_usecase_createorder>SAP_Web_Login,SAP_Web_CreateOrder</SAP_Web_usecase_createorder>
+	<SAP_Web_usecase_changeOrder>SAP_Web_Login,SAP_Web_ChangeOrder</SAP_Web_usecase_changeOrder>
+	<SAP_Web_usecase_dispalyorder>SAP_Web_Login</SAP_Web_usecase_dispalyorder>
+</UseCases>

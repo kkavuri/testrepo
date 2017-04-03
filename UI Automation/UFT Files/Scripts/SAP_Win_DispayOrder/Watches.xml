@@ -1,0 +1,6 @@
+﻿<Properties>
+  <WatchEntry0 value="APGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Display Standard Order&quot;).SAPGuiEdit(&quot;Standard Order&quot;).GetRoproperty(&quot;value&quot;)" />
+  <WatchEntry1 value="OrderNo" />
+  <WatchEntry2 value="SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Display Standard Order&quot;).SAPGuiEdit(&quot;PO Number&quot;).GetROProperty(&quot;value&quot;)" />
+  <WatchEntry3 value="SAPGuiSession(&quot;Session&quot;).SAPGuiWindow(&quot;Display Standard Order&quot;).SAPGuiEdit(&quot;Standard Order&quot;).GetRoproperty(&quot;value&quot;)" />
+</Properties>

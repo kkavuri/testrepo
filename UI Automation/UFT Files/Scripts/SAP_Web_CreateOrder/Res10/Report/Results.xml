@@ -1,0 +1,565 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="India Standard Time">
+<General productName="HP Unified Functional Testing" productVer="12.54" os="Windows 7" host="OTSI-LAP11"><DocLocation><![CDATA[C:\Users\dkalakoti\Desktop\tap soft\SAP_Automation_25_01\TAP\Scripts\SAP_Web_CreateOrder]]></DocLocation></General>
+<Doc rID="T1"   productName= "HP Unified Functional Testing"  >
+<DName><![CDATA[SAP_Web_CreateOrder]]></DName>
+<Res><![CDATA[Res10]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[LoadFunctionLibrary]]></Obj>
+<Details plainTxt="False" ><![CDATA[LoadFunctionLibrary function passed]]></Details>
+<Time><![CDATA[28-03-2017 - 15:25:47]]></Time>
+<TimeTick>1490694947</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="8" status="Passed" >
+<Disp><![CDATA[LoadFunctionLibrary]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[The specified shared object repository is already associated with the specified action.<BR/>Function file: C:\Users\dkalakoti\Desktop\tap soft\SAP_Automation_25_01\TAP\Library_Files\Global\Global_Functions.qfl<BR/>Line (456): &quot;			repositoriescollection.add scriptpath &amp; &quot;\Repository\&quot;&amp; Environment(&quot;OR_Name&quot;)&amp; &quot;.tsr&quot;&quot;.]]></Details>
+<Time><![CDATA[28-03-2017 - 15:25:47]]></Time>
+<TimeTick>1490694947</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="9" status="Failed" Source="C:\Users\dkalakoti\Desktop\tap soft\SAP_Automation_25_01\TAP\Library_Files\Global\Global_Functions.qfl" SourceLine="455" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[LoadFunctionLibrary]]></Obj>
+<Details plainTxt="False" ><![CDATA[LoadFunctionLibrary function passed]]></Details>
+<Time><![CDATA[28-03-2017 - 15:25:47]]></Time>
+<TimeTick>1490694947</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="10" status="Passed" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[LoadFunctionLibrary]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[LoadFunctionLibrary]]></Obj>
+<Details plainTxt="False" ><![CDATA[LoadFunctionLibrary function passed]]></Details>
+<Time><![CDATA[28-03-2017 - 15:25:47]]></Time>
+<TimeTick>1490694947</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="11" status="Passed" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[LoadFunctionLibrary]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[[ WebElement ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[28-03-2017 - 15:25:48]]></Time>
+<TimeTick>1490694948</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="14" >
+<Disp><![CDATA[[ WebElement ].Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[[ WebElement ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[28-03-2017 - 15:25:50]]></Time>
+<TimeTick>1490694950</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="18" >
+<Disp><![CDATA[[ WebElement ].Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[[ WebElement ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[28-03-2017 - 15:25:51]]></Time>
+<TimeTick>1490694951</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="22" >
+<Disp><![CDATA[[ WebElement ].Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[[ WebElement ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[28-03-2017 - 15:25:52]]></Time>
+<TimeTick>1490694952</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="26" >
+<Disp><![CDATA[[ WebElement ].Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[[ tree#6.105#0000000383#0#1#mi ].RightClick]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[28-03-2017 - 15:25:53]]></Time>
+<TimeTick>1490694953</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="30" >
+<Disp><![CDATA[[ tree#6.105#0000000383#0#1#mi ].RightClick]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[[ wnd[0]/usr/cntlIMAGE_CONTAINER/shellcont/shell/shellcont[0]/shell/shell/itemXXEXEC ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[28-03-2017 - 15:25:54]]></Time>
+<TimeTick>1490694954</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="34" >
+<Disp><![CDATA[[ wnd[0]/usr/cntlIMAGE_CONTAINER/shellcont/shell/shellcont[0]/shell/shell/itemXXEXEC ].Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[Logon]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:25]]></Time>
+<TimeTick>1490694985</TimeTick>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[Create_Sales_Order:Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:25]]></Time>
+<TimeTick>1490694985</TimeTick>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[Create_Order_InitialScreen]]></Obj>
+<Details plainTxt="False" ><![CDATA[Frame]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:25]]></Time>
+<TimeTick>1490694985</TimeTick>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA["Create_Order_InitialScreen"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:25]]></Time>
+<TimeTick>1490694985</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="146" status="Warning" >
+<Disp><![CDATA["Create_Order_InitialScreen"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA["Create_Order_InitialScreen"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=itsframe1_20161229080544.9670000<br>micclass=Frame<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (4 objects found)&nbsp;</FONT></u><br>
+micclass=Frame<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=itsframe1_20161229080544.9670000<SPAN class=Failed> (Skipped)</SPAN><br>title=Create Sales Order: Initial Screen<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>url=http://192.168.1.21:8000/sap(cz1TSUQlM2FBTk9OJTNhT1RTSS1TQVBfUkU0XzAwJTNhVW5RNXdGNEk1NW83bzEwaVBaQVBicEN1RUNyZmxTZVlZOHFiaGo0LS1BVFQ=)/bc/gui/sap/its/webgui#<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:25]]></Time>
+<TimeTick>1490694985</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="147" >
+<Disp><![CDATA["Create_Order_InitialScreen"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[Create_Order.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:25]]></Time>
+<TimeTick>1490694985</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="148" >
+<Disp><![CDATA[Create_Order.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="10" nRep="145" status="Warning" >
+<Disp><![CDATA[Create_Order_InitialScreen]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="9" nRep="144" status="Warning" >
+<Disp><![CDATA[Create_Sales_Order:Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="8" nRep="143" status="Warning" >
+<Disp><![CDATA[Logon]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj ><![CDATA[Create Sales Order Initial Screen]]></Obj>
+<Details ><![CDATA[Create Sales Order  Initial Screen Exists]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:25]]></Time>
+<TimeTick>1490694985</TimeTick>
+<NodeArgs eType="User" icon="12" nRep="149" status="Passed" >
+<Disp><![CDATA[Create Sales Order Initial Screen]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[Logon]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:46]]></Time>
+<TimeTick>1490695006</TimeTick>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[Create_Sales_Order:Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:46]]></Time>
+<TimeTick>1490695006</TimeTick>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[Create_Order_InitialScreen]]></Obj>
+<Details plainTxt="False" ><![CDATA[Frame]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:46]]></Time>
+<TimeTick>1490695006</TimeTick>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA["Create_Order_InitialScreen"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:46]]></Time>
+<TimeTick>1490695006</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="191" status="Warning" >
+<Disp><![CDATA["Create_Order_InitialScreen"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA["Create_Order_InitialScreen"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=itsframe1_20161229080544.9670000<br>micclass=Frame<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (4 objects found)&nbsp;</FONT></u><br>
+micclass=Frame<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=itsframe1_20161229080544.9670000<SPAN class=Failed> (Skipped)</SPAN><br>title=Create Sales Order: Initial Screen<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>url=http://192.168.1.21:8000/sap(cz1TSUQlM2FBTk9OJTNhT1RTSS1TQVBfUkU0XzAwJTNhVW5RNXdGNEk1NW83bzEwaVBaQVBicEN1RUNyZmxTZVlZOHFiaGo0LS1BVFQ=)/bc/gui/sap/its/webgui#<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:46]]></Time>
+<TimeTick>1490695006</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="192" >
+<Disp><![CDATA["Create_Order_InitialScreen"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[Order_Type.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["OR"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:26:46]]></Time>
+<TimeTick>1490695006</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="193" >
+<Disp><![CDATA[Order_Type.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA["Create_Order_InitialScreen"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:07]]></Time>
+<TimeTick>1490695027</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="232" status="Warning" >
+<Disp><![CDATA["Create_Order_InitialScreen"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA["Create_Order_InitialScreen"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=itsframe1_20161229080544.9670000<br>micclass=Frame<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (4 objects found)&nbsp;</FONT></u><br>
+micclass=Frame<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=itsframe1_20161229080544.9670000<SPAN class=Failed> (Skipped)</SPAN><br>title=Create Sales Order: Initial Screen<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>url=http://192.168.1.21:8000/sap(cz1TSUQlM2FBTk9OJTNhT1RTSS1TQVBfUkU0XzAwJTNhVW5RNXdGNEk1NW83bzEwaVBaQVBicEN1RUNyZmxTZVlZOHFiaGo0LS1BVFQ=)/bc/gui/sap/its/webgui#<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:07]]></Time>
+<TimeTick>1490695027</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="233" >
+<Disp><![CDATA["Create_Order_InitialScreen"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[Sales_Org.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["1000"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:07]]></Time>
+<TimeTick>1490695027</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="234" >
+<Disp><![CDATA[Sales_Org.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA["Create_Order_InitialScreen"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:28]]></Time>
+<TimeTick>1490695048</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="273" status="Warning" >
+<Disp><![CDATA["Create_Order_InitialScreen"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA["Create_Order_InitialScreen"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=itsframe1_20161229080544.9670000<br>micclass=Frame<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (4 objects found)&nbsp;</FONT></u><br>
+micclass=Frame<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=itsframe1_20161229080544.9670000<SPAN class=Failed> (Skipped)</SPAN><br>title=Create Sales Order: Initial Screen<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>url=http://192.168.1.21:8000/sap(cz1TSUQlM2FBTk9OJTNhT1RTSS1TQVBfUkU0XzAwJTNhVW5RNXdGNEk1NW83bzEwaVBaQVBicEN1RUNyZmxTZVlZOHFiaGo0LS1BVFQ=)/bc/gui/sap/its/webgui#<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:28]]></Time>
+<TimeTick>1490695048</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="274" >
+<Disp><![CDATA["Create_Order_InitialScreen"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[Distribution_Channel.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["12"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:28]]></Time>
+<TimeTick>1490695048</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="275" >
+<Disp><![CDATA[Distribution_Channel.Set]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="10" nRep="190" status="Warning" >
+<Disp><![CDATA[Create_Order_InitialScreen]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[Create_Order_Overview]]></Obj>
+<Details plainTxt="False" ><![CDATA[Frame]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:33]]></Time>
+<TimeTick>1490695053</TimeTick>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[Overview_Title.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:33]]></Time>
+<TimeTick>1490695053</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="278" >
+<Disp><![CDATA[Overview_Title.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="10" nRep="277" >
+<Disp><![CDATA[Create_Order_Overview]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="9" nRep="189" status="Warning" >
+<Disp><![CDATA[Create_Sales_Order:Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="8" nRep="188" status="Warning" >
+<Disp><![CDATA[Logon]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj ><![CDATA[Create Sales Order Overview]]></Obj>
+<Details ><![CDATA[Create Sales Order Overview Page Exists]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:33]]></Time>
+<TimeTick>1490695053</TimeTick>
+<NodeArgs eType="User" icon="12" nRep="279" status="Passed" >
+<Disp><![CDATA[Create Sales Order Overview]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[Logon]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:33]]></Time>
+<TimeTick>1490695053</TimeTick>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[Create_Sales_Order:Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:33]]></Time>
+<TimeTick>1490695053</TimeTick>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[Create_Order_Overview]]></Obj>
+<Details plainTxt="False" ><![CDATA[Frame]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:33]]></Time>
+<TimeTick>1490695053</TimeTick>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[Sold_To_Party.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["1900"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:33]]></Time>
+<TimeTick>1490695053</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="285" >
+<Disp><![CDATA[Sold_To_Party.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[Ship_To_Party.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["1900"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:33]]></Time>
+<TimeTick>1490695053</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="288" >
+<Disp><![CDATA[Ship_To_Party.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[PO_Number.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test PO"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:33]]></Time>
+<TimeTick>1490695053</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="291" >
+<Disp><![CDATA[PO_Number.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[[ tbl71379[1,2]_c ].Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["1400-300"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:34]]></Time>
+<TimeTick>1490695054</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="294" >
+<Disp><![CDATA[[ tbl71379[1,2]_c ].Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA[[ tbl71379[1,3]_c ].Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["15"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:34]]></Time>
+<TimeTick>1490695054</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="296" >
+<Disp><![CDATA[[ tbl71379[1,3]_c ].Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[Save_Button.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:36]]></Time>
+<TimeTick>1490695056</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="299" >
+<Disp><![CDATA[Save_Button.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="10" nRep="284" >
+<Disp><![CDATA[Create_Order_Overview]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[Change_Sales_Order_Initial]]></Obj>
+<Details plainTxt="False" ><![CDATA[Frame]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:41]]></Time>
+<TimeTick>1490695061</TimeTick>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[Standard_Order_Title.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:41]]></Time>
+<TimeTick>1490695061</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="307" >
+<Disp><![CDATA[Standard_Order_Title.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="10" nRep="306" >
+<Disp><![CDATA[Change_Sales_Order_Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="9" nRep="283" >
+<Disp><![CDATA[Create_Sales_Order:Initial]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="8" nRep="282" >
+<Disp><![CDATA[Logon]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T48">
+<Obj ><![CDATA[Standard Order Availability Control]]></Obj>
+<Details ><![CDATA[Standard Order Availability Control Page Exists]]></Details>
+<Time><![CDATA[28-03-2017 - 15:27:41]]></Time>
+<TimeTick>1490695061</TimeTick>
+<NodeArgs eType="User" icon="12" nRep="308" status="Passed" >
+<Disp><![CDATA[Standard Order Availability Control]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="28-03-2017 - 15:25:46" eTime="28-03-2017 - 15:27:42" passed="6" failed="1" warnings="4" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Failed" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Failed" >
+<Disp><![CDATA[SAP_Web_CreateOrder Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="28-03-2017 - 15:25:46" eTime="28-03-2017 - 15:27:42" passed="6" failed="1" warnings="4" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test SAP_Web_CreateOrder Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>
